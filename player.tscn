@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwc3twhn67j3k"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_dg5m5"]
+[ext_resource type="Texture2D" path="res://Tiles/Tiles/tile_0085.png" id="2_nfu55"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11n13"]
+size = Vector2(39, 36.75)
+
+[node name="Player" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 1
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_dg5m5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(267, 168)
+scale = Vector2(2.4375, 2.4375)
+texture = ExtResource("2_nfu55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(267, 169)
+shape = SubResource("RectangleShape2D_11n13")

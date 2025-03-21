@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://84b55f37m6s7"]
+
+[ext_resource type="Texture2D" path="res://Tiles/Tiles/tile_0108.png" id="1_0inkw"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_ltspq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbssy"]
+radius = 263.093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_box6a"]
+radius = 21.0238
+
+[node name="Enemy" type="Node2D"]
+
+[node name="enemy" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ltspq")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy"]
+position = Vector2(337, 244)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_0inkw")
+
+[node name="Detection" type="Area2D" parent="enemy"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Detection"]
+position = Vector2(337, 244)
+shape = SubResource("CircleShape2D_qbssy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2(337, 244)
+shape = SubResource("CircleShape2D_box6a")
+
+[connection signal="body_entered" from="enemy/Detection" to="enemy" method="_on_detection_body_entered"]
+[connection signal="body_exited" from="enemy/Detection" to="enemy" method="_on_detection_body_exited"]
