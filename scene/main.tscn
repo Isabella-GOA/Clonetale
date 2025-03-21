@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://6b2y2qghjw5h"]
+
+[ext_resource type="PackedScene" uid="uid://5gpl75war2t6" path="res://scene/EnemyCounter.tscn" id="1_m136c"]
+[ext_resource type="PackedScene" uid="uid://byjn6vxu3ulyr" path="res://scene/EnemyManager.tscn" id="2_n1x2w"]
+
+[node name="Main" type="Node2D"]
+
+[node name="EnemyCounter" parent="." instance=ExtResource("1_m136c")]
+
+[node name="EnemyManager" parent="." instance=ExtResource("2_n1x2w")]
