@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://f6iuipkq7mqd"]
+
+[ext_resource type="PackedScene" uid="uid://cl3qmcsehtab4" path="res://enemyai.tscn" id="1_la4ui"]
+[ext_resource type="PackedScene" uid="uid://byjn6vxu3ulyr" path="res://EnemyManager.tscn" id="2_xwyay"]
+[ext_resource type="PackedScene" uid="uid://5gpl75war2t6" path="res://EnemyCounter.tscn" id="3_oabtw"]
+
+[node name="test" type="Node2D"]
+
+[node name="Enemy2" parent="." instance=ExtResource("1_la4ui")]
+
+[node name="EnemyManager" parent="." instance=ExtResource("2_xwyay")]
+
+[node name="EnemyCounter" parent="." instance=ExtResource("3_oabtw")]
+
+[connection signal="increase_count" from="EnemyManager" to="EnemyCounter" method="_on_enemy_manager_increase_count"]

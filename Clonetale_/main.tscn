@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://6b2y2qghjw5h"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_eixny"]
+[ext_resource type="PackedScene" uid="uid://5gpl75war2t6" path="res://EnemyCounter.tscn" id="1_m136c"]
+[ext_resource type="PackedScene" uid="uid://byjn6vxu3ulyr" path="res://EnemyManager.tscn" id="2_n1x2w"]
+[ext_resource type="PackedScene" uid="uid://b2yb01oo82q8r" path="res://pipe puzzle.tscn" id="3_pff3r"]
+[ext_resource type="PackedScene" uid="uid://cha7vyys5rt7t" path="res://level_1.tscn" id="4_mhm32"]
+[ext_resource type="PackedScene" uid="uid://cl3qmcsehtab4" path="res://enemyai.tscn" id="6_vlyqv"]
+[ext_resource type="PackedScene" uid="uid://cwc3twhn67j3k" path="res://player.tscn" id="7_tqr1t"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8um6y"]
+keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_828vl"]
+events = [SubResource("InputEventKey_8um6y")]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_eixny")
+
+[node name="EnemyCounter" parent="." instance=ExtResource("1_m136c")]
+z_index = -20
+
+[node name="EnemyManager" parent="." instance=ExtResource("2_n1x2w")]
+
+[node name="Level 1" parent="." instance=ExtResource("4_mhm32")]
+z_index = -10
+position = Vector2(-1586, -926)
+scale = Vector2(2.857, 2.857)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(60, 0)
+zoom = Vector2(0.35, 0.35)
+
+[node name="Player" parent="." instance=ExtResource("7_tqr1t")]
+
+[node name="Enemy3" parent="." instance=ExtResource("6_vlyqv")]
+
+[node name="pipepuzzle" parent="." instance=ExtResource("3_pff3r")]
+visible = false
+z_index = 100
+
+[node name="tempsceneswitchbut" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+shortcut = SubResource("Shortcut_828vl")
+
+[node name="temptext" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -1569.0
+offset_top = -900.0
+offset_right = 152.0
+offset_bottom = -630.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "move with wasd or arrow keys, you are currently a door
+click on the enemy (cat) to make it dissapear
+press spacebar to trigger pipe puzzle scene"
+metadata/_edit_group_ = true
+
+[connection signal="pressed" from="tempsceneswitchbut" to="." method="_on_tempsceneswitchbut_pressed"]

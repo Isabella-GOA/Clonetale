@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://84b55f37m6s7"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_ltspq"]
+[ext_resource type="PackedScene" uid="uid://cl3qmcsehtab4" path="res://enemyai.tscn" id="2_fo3b1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbssy"]
+radius = 263.093
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_ltspq")
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+position = Vector2(337, 244)
+shape = SubResource("CircleShape2D_qbssy")
+
+[node name="Enemy2" parent="." instance=ExtResource("2_fo3b1")]
+position = Vector2(339, 246)
