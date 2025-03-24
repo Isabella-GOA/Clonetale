@@ -7,18 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://cha7vyys5rt7t" path="res://level_1.tscn" id="4_mhm32"]
 [ext_resource type="PackedScene" uid="uid://cl3qmcsehtab4" path="res://enemyai.tscn" id="6_vlyqv"]
 [ext_resource type="PackedScene" uid="uid://cwc3twhn67j3k" path="res://player.tscn" id="7_tqr1t"]
+[ext_resource type="AudioStream" uid="uid://cee1bksmmpx82" path="res://Pixel Dreams.mp3" id="8_poaqg"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_8um6y"]
-keycode = 32
-
-[sub_resource type="Shortcut" id="Shortcut_828vl"]
-events = [SubResource("InputEventKey_8um6y")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbnt4"]
+size = Vector2(146, 214)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_eixny")
 
 [node name="EnemyCounter" parent="." instance=ExtResource("1_m136c")]
-z_index = -20
+visible = false
+offset_left = -1560.0
+offset_top = -900.0
+offset_right = -1560.0
+offset_bottom = -900.0
+scale = Vector2(3, 3)
 
 [node name="EnemyManager" parent="." instance=ExtResource("2_n1x2w")]
 
@@ -32,30 +35,141 @@ position = Vector2(60, 0)
 zoom = Vector2(0.35, 0.35)
 
 [node name="Player" parent="." instance=ExtResource("7_tqr1t")]
+unique_name_in_owner = true
+position = Vector2(-1134, -524)
 
 [node name="Enemy3" parent="." instance=ExtResource("6_vlyqv")]
+visible = false
+position = Vector2(762, -430)
 
 [node name="pipepuzzle" parent="." instance=ExtResource("3_pff3r")]
 visible = false
 z_index = 100
 
-[node name="tempsceneswitchbut" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-shortcut = SubResource("Shortcut_828vl")
-
-[node name="temptext" type="Label" parent="."]
+[node name="pipe access" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
-offset_left = -1569.0
-offset_top = -900.0
-offset_right = 152.0
-offset_bottom = -630.0
+offset_left = 516.0
+offset_top = -73.0
+offset_right = 1089.0
+offset_bottom = 197.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 64
-text = "move with wasd or arrow keys, you are currently a door
-click on the enemy (cat) to make it dissapear
-press spacebar to trigger pipe puzzle scene"
+text = "Defeat 10
+Enemies 
+to access 
+pipeing"
 metadata/_edit_group_ = true
 
-[connection signal="pressed" from="tempsceneswitchbut" to="." method="_on_tempsceneswitchbut_pressed"]
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(634, 327)
+collision_layer = 4
+collision_mask = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(35, 87)
+shape = SubResource("RectangleShape2D_mbnt4")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 85.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.111197, 0.111197, 0.111197, 0.913725)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_poaqg")
+volume_db = -20.0
+autoplay = true
+
+[node name="Label2" type="Label" parent="."]
+z_index = 1000
+offset_left = -1590.0
+offset_top = -930.0
+offset_right = -1543.0
+offset_bottom = -903.5
+scale = Vector2(70, 70)
+
+[node name="ColorRect" type="ColorRect" parent="Label2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.171272, 0.322453, 0.103378, 1)
+
+[node name="Button" type="Button" parent="Label2"]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 109.0
+offset_bottom = 42.0
+scale = Vector2(0.1, 0.1)
+text = "Play Game"
+
+[node name="Button2" type="Button" parent="Label2"]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 83.0
+offset_bottom = 46.0
+scale = Vector2(0.1, 0.1)
+text = "Credits"
+
+[node name="Label" type="Label" parent="Label2"]
+visible = false
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 367.0
+offset_bottom = 76.0
+scale = Vector2(0.1, 0.1)
+text = "WELCOME TO CLONETALE!
+Clear the enemies with your mouse to stop the 
+cloning opperation
+to do: win soud effect, credits screen "
+horizontal_alignment = 1
+
+[node name="credits" type="Label" parent="Label2"]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 105.0
+offset_bottom = 23.0
+scale = Vector2(0.1, 0.1)
+text = "Developers
+Isabella Picone
+Zhijie Ye
+Ansheng Zhou
+
+Assets
+
+Sound Effects
+Retro hurt 1 - Driken5482
+Game Bonus - Universfield
+Game Over Arcade = freesound_community
+(from website pixabey)
+"
+horizontal_alignment = 1
+
+[node name="return" type="Button" parent="Label2"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.075, 0.075)
+text = "Main Menu"
+
+[connection signal="increase_count" from="EnemyManager" to="." method="_on_enemy_manager_increase_count"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="Label2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Label2/Button2" to="." method="_on_button_2_pressed"]

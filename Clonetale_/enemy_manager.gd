@@ -12,7 +12,7 @@ func _ready():
 	_start_cloning()
 
 func _start_cloning():
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(.75).timeout
 	if enemies.size() < MAX_ENEMIES:
 		_spawn_enemy()
 	_start_cloning()
@@ -26,3 +26,4 @@ func _spawn_enemy():
 func remove_enemy(enemy):
 	enemies.erase(enemy)
 	emit_signal("increase_count")
+	$AudioStreamPlayer2D.play()

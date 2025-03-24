@@ -17,26 +17,26 @@ var turn63 = 0
 var turn64 = 0
 signal gameover
 @onready var label = $win
+var win1 = false
+var win2 = false
+var win3 = false
+var win4 = false
+var win5 = false
+var win6 = false
+var win7 = false
+var win8 = false
+var win9 = false
+var win10 = false
+var win11 = false
+var win12 = false
+var win13 = false
+var win14 = false
+var win15 = false
 
 func  _process(delta: float) -> void:
-	var win1 = false
-	var win2 = false
-	var win3 = false
-	var win4 = false
-	var win5 = false
-	var win6 = false
-	var win7 = false
-	var win8 = false
-	var win9 = false
-	var win10 = false
-	var win11 = false
-	var win12 = false
-	var win13 = false
-	var win14 = false
-	var win15 = false
 	if win1 == true and win2 == true and win3 == true and win4 == true and win5 == true and win6 == true and win7 == true and win8 == true and win9 == true and win10 == true and win11 == true and win12 == true and win13 == true and win14 == true and win15 == true:
-		print('work')
 		$win.show()
+		$AudioStreamPlayer2D.play()
 	if turn12 == 2:
 		$"1,2".play("new_animation_1")
 		win1 = true
@@ -283,3 +283,7 @@ func _on_button_65_pressed() -> void:
 
 func _on_button_66_pressed() -> void:
 	$"6,6".rotate(PI/2)
+
+
+func _on_button_pressed() -> void:
+		get_tree().reload_current_scene()
