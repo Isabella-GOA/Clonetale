@@ -28,7 +28,6 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	$pipepuzzle.show()
 	$Player.hide()
-	$EnemyCounter.hide()
 	$EnemyManager.hide()
 
 
@@ -37,7 +36,6 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_2_pressed() -> void:
-	$EnemyCounter.hide()
 	$EnemyManager.hide()
 	$"Level 1".hide()
 	%Player.hide()
@@ -48,3 +46,24 @@ func _on_button_2_pressed() -> void:
 	
 	$Label2/credits.show()
 	$Label2/return.show()
+
+var play = 0
+
+func _on_pipepuzzle_win() -> void:
+	play += 1
+	if play == 1:
+		$AudioStreamPlayer2D2.play()
+
+
+
+func _on_return_pressed() -> void:
+	$EnemyManager.show()
+	$"Level 1".show()
+	%Player.show()
+	$Enemy3.show()
+	$Label2/Button.show()
+	$Label2/Button2.show()
+	$Label2/Label.show()
+	
+	$Label2/credits.hide()
+	$Label2/return.hide()

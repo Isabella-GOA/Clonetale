@@ -18,11 +18,6 @@ func _ready():
 	_choose_new_behavior()
 
 func _physics_process(delta):
-	'if player_chase:
-		is_walking = false
-		direction += (player.position - position)/SPEED
-		velocity = direction * SPEED
-		move_and_slide()'
 	if is_walking:
 		velocity = direction * SPEED
 		move_and_slide()
@@ -69,22 +64,12 @@ func _on_button_pressed() -> void:
 		enemy_manager.remove_enemy(self)
 	queue_free()
 
-'var player_chase = false
-var player = null
-
-func _on_detection_body_entered(body: Node2D) -> void:
-	player = body
-	player_chase = true
-
-
-func _on_detection_body_exited(body: Node2D) -> void:
-	is_walking = true
-	player_chase = false'
-
-func _on_detection_3_death() -> void:
-	print('recived')
-	$ColorRect/death.show()
-	$AudioStreamPlayer2D.play()
-
 func _on_respawn_pressed() -> void:
 		get_tree().reload_current_scene()
+
+func _on_detection_3_body_entered(body: Node2D) -> void:
+	if body.name == 'Player':
+		print('recived')
+		$death.show()
+		$respawn.show()
+		$AudioStreamPlayer2D.play()

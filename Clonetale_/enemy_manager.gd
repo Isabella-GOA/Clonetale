@@ -12,14 +12,14 @@ func _ready():
 	_start_cloning()
 
 func _start_cloning():
-	await get_tree().create_timer(.75).timeout
+	await get_tree().create_timer(.55).timeout
 	if enemies.size() < MAX_ENEMIES:
 		_spawn_enemy()
 	_start_cloning()
 
 func _spawn_enemy():
 	var new_enemy = preload("res://enemyai.tscn").instantiate()
-	new_enemy.global_position = Vector2(rng.randi_range(100, 500), rng.randi_range(100, 500))
+	new_enemy.global_position = Vector2(rng.randi_range(-1000, 1000), rng.randi_range(-500, 500))
 	enemies.append(new_enemy)
 	add_child(new_enemy)
 
