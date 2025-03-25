@@ -136,8 +136,7 @@ offset_bottom = 76.0
 scale = Vector2(0.1, 0.1)
 text = "WELCOME TO CLONETALE!
 Clear the enemies with your mouse to stop the 
-cloning opperation
-to do: win soud effect, credits screen "
+cloning opperation."
 horizontal_alignment = 1
 
 [node name="credits" type="Label" parent="Label2"]
@@ -157,7 +156,7 @@ Assets
 Puzzle Pack II - Kenney Vleugels
 Tiny Dungeon (1.0) - Kenney
 Tiny Town (1.1) - Kenney
-cat"
+Cat Character Asset Pack - OboroPixel"
 
 [node name="Label2" type="Label" parent="Label2/credits"]
 layout_mode = 0
@@ -168,8 +167,7 @@ offset_bottom = 126.0
 text = "Retro hurt 1 - Driken5482
 Game Bonus - Universfield
 Game Over Arcade - freesound_community
-(from website pixabey)
-pixy
+Pixel Dreams - Suno
 "
 
 [node name="return" type="Button" parent="Label2"]
