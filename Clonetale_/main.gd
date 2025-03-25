@@ -18,17 +18,23 @@ func _on_enemy_manager_increase_count() -> void:
 
 
 func _process(delta: float) -> void:
+	if count <= 19:
+		$pipepuzzle.hide()
+		$Area2D/CollisionShape2D.hide()
 	if count >= 20:
 		$Area2D.show()
+		$Area2D/CollisionShape2D.show()
 		label.text = "Get to the hole 
 		in the wall to 
 		stop the facility"
-
+	else:
+		pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	$pipepuzzle.show()
-	$Player.hide()
-	$EnemyManager.hide()
+	if body.name == 'Player' and count >= 20:
+		$pipepuzzle.show()
+		$Player.hide()
+		$EnemyManager.hide()
 
 
 func _on_button_pressed() -> void:
